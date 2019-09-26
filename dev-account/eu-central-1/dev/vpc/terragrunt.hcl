@@ -18,4 +18,18 @@ inputs = {
   private_subnets = ["10.0.20.0/24", "10.0.21.0/24"]
   enable_nat_gateway = true
   single_nat_gateway = true
+
+  vpc_tags = {
+    "kubernetes.io/cluster/vpc-dev" = "shared"
+  }
+
+  public_subnet_tags = {
+    "kubernetes.io/cluster/vpc-dev" = "shared"
+    "kubernetes.io/role/elb"                      = "1"
+  }
+
+  private_subnet_tags = {
+    "kubernetes.io/cluster/vpc-dev" = "shared"
+    "kubernetes.io/role/internal-elb"             = "1"
+  }
 }
