@@ -4,7 +4,41 @@ Terragrunt definitions related to [Containers sandbox](https://github.com/lejeun
 Required : AWS configuration with profile _dev_
 
 
-To execute with local reference, override the source
+## To build the complete stack
+
+### VPC
+
+
+```
+cd dev-account/eu-central-1/dev/vpc
+terragrunt apply 
+
+```
+
+Note the vpc and private subnet ids
+
+### EKS
+
+Set the vpc and subnet ids in the terragrunt file
+
+```
+cd dev-account/eu-central-1/dev/vpc
+terragrunt apply 
+
+```
+
+Update local kube configuration (in ~/.kube), using the generated kubeconfig file. See the _kubeconfig_filename_ output parameter.
+
+
+
+Check cluster state with _kubectl cluster-info_ and _kubectl get nodes -A_
+
+
+
+### Infra
+
+
+## To execute with local reference, override the source
 
 ```
 cd dev-account/eu-central-1/dev/hello-world
