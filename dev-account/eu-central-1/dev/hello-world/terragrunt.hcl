@@ -2,7 +2,7 @@
 # working directory, into a temporary folder, and execute your Terraform commands in that folder.
 
 terraform {
-  source = "git::git@github.com:terraform-aws-modules/terraform-aws-vpc.git?ref=v1.0.4"
+  source = "git::git@github.com:lejeunen/containers-infrastructure-modules.git//hello-world"
 
 }
 
