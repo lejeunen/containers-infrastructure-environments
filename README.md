@@ -37,6 +37,27 @@ Check cluster state with _kubectl cluster-info_ and _kubectl get nodes -A_
 
 ### Infra
 
+#### Tiller
+
+Configuration for the tiller service.
+
+```
+cd dev-account/eu-central-1/dev/tiller
+terragrunt apply 
+
+```
+
+#### Kubernetes dashboard
+
+Deploy the k8s dashboard.
+
+```
+cd dev-account/eu-central-1/dev/kubernetes-dashboard
+terragrunt apply 
+
+```
+
+
 
 ## To execute with local reference, override the source
 
