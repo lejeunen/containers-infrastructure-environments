@@ -1,7 +1,14 @@
 # containers-infrastructure-environments
 Terragrunt definitions related to [Containers sandbox](https://github.com/lejeunen/containers)
 
-Required : AWS configuration with profile _dev_
+Required : 
+
+1. AWS configuration with profile _dev_
+
+1. [Install Terraform](https://www.terraform.io/intro/getting-started/install.html).
+
+1. [Install Terragrunt](https://github.com/gruntwork-io/terragrunt/blob/master/README.md#install-terragrunt).
+
 
 
 ## To build the complete stack
@@ -57,6 +64,13 @@ terragrunt apply
 
 ```
 
+### App modules
+
+```
+cd dev-account/eu-central-1/dev/module1
+terragrunt apply 
+
+```
 
 
 ## To execute with local reference, override the source
