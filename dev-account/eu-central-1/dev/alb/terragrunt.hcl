@@ -20,7 +20,7 @@ dependency "sg_http" {
 }
 
 # Dependency towards security-group-https
-dependency "sg_http" {
+dependency "sg_https" {
   config_path = "../security-group-https"
 }
 
