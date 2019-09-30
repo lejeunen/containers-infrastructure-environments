@@ -22,11 +22,10 @@ terragrunt apply
 
 ```
 
-Note the vpc and private subnet ids
 
 ### EKS
 
-Set the vpc and subnet ids in the terragrunt file
+The vpc and subnet ids are obtained from the VPC module
 
 ```
 cd dev-account/eu-central-1/dev/eks
