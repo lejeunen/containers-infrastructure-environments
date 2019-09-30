@@ -9,13 +9,17 @@ include {
   path = find_in_parent_folders()
 }
 
+# Dependency towards VPC
+dependency "vpc" {
+  config_path = "../vpc"
+}
+
 # These are the variables we have to pass in to use the module specified in the terragrunt configuration above
-# TODO use dependency towards the VPC module
 inputs = {
 
-  cluster_name = "eksdev"
-  subnets  = ["subnet-0d2c90ad9091f62e0", "subnet-021200ac004976dee"]
-  vpc_id = "vpc-0ab8a69a02d1a086a"
+  cluster_name = dependency.vpc.outputs.name
+  subnets  = dependency.vpc.outputs.private_subnets
+  vpc_id = dependency.vpc.outputs.vpc_id
 
   worker_groups = [
     {

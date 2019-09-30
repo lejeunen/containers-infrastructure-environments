@@ -9,9 +9,12 @@ include {
   path = find_in_parent_folders()
 }
 
+
 # These are the variables we have to pass in to use the module specified in the terragrunt configuration above
 inputs = {
-  name          = "vpc-dev"
+
+  name          = "dev01"
+
   cidr = "10.0.0.0/16"
   azs             = ["eu-central-1a", "eu-central-1b"]
   public_subnets  = ["10.0.10.0/24", "10.0.11.0/24"]
