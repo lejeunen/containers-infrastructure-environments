@@ -62,6 +62,38 @@ terragrunt apply
 
 ```
 
+### Ingress
+
+Order is important
+
+#### Http/Https security groups
+
+Create the 2 security groups that will be used by the ALB for incoming traffic
+
+- security-group-http
+- security-group-https
+
+#### nginx-ingress
+
+Create the _nginx-ingress_ itself and a _kubernetes ingress_ for path based mapping
+
+- nginx-ingress
+
+#### ALB
+
+The ALB itself has multiple dependencies :
+- security-group-http and https to associate them with the load balancer, for incoming traffic
+- vpc for the vpc id and public subnets to use
+- eks for the worker security group id, to be able to connect to the workers
+- nginx-ingress for the node port to use 
+
+#### Autoscaling attachment
+
+The last step is to associate target group created by the ALB with the workers ASG
+
+
+
+
 ### App modules
 
 ```

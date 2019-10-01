@@ -29,20 +29,26 @@ dependency "eks" {
   config_path = "../eks"
 }
 
+# Dependency the nginx-ingress
+dependency "nginx" {
+  config_path = "../nginx-ingress"
+}
+
 # These are the variables we have to pass in to use the module specified in the terragrunt configuration above
 inputs = {
-
   load_balancer_name            = dependency.vpc.outputs.name
   security_groups               = [dependency.sg_http.outputs.this_security_group_id, dependency.sg_https.outputs.this_security_group_id, dependency.eks.outputs.worker_security_group_id]
   logging_enabled               = false
   subnets                       = dependency.vpc.outputs.public_subnets
   tags                          = "${map("Env", "dev")}"
   vpc_id                        = dependency.vpc.outputs.vpc_id
+  https_listeners_count         = 1
+  # TODO reference certificate instead of hard coding
   https_listeners               = "${list(map("certificate_arn", "arn:aws:acm:eu-central-1:840205991060:certificate/a8e6c504-c4d3-4ee6-9b09-2e2e54a34e6c", "port", 443))}"
-  https_listeners_count         = "1"
+  http_tcp_listeners_count      = 1
   http_tcp_listeners            = "${list(map("port", "80", "protocol", "HTTP"))}"
-  http_tcp_listeners_count      = "1"
-  target_groups                 = "${list(map("name", "application", "backend_protocol", "HTTP", "backend_port", "80"))}"
-  target_groups_count           = "1"
-
+  target_groups_count           = 1
+  target_groups                 = "${list(map("name", "application", "backend_protocol", "HTTP", "backend_port", dependency.nginx.outputs.node_port))}"
+  extra_ssl_certs_count         = 0
+  extra_ssl_certs               = []
 }
