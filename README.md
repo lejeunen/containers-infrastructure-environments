@@ -91,6 +91,8 @@ The ALB itself has multiple dependencies :
 
 The last step is to associate target group created by the ALB with the workers ASG
 
+- autoscaling-attachment
+
 
 
 
