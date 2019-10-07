@@ -93,7 +93,16 @@ The last step is to associate target group created by the ALB with the workers A
 
 - autoscaling-attachment
 
+### Test it
 
+Get the url of the ALB with
+
+```
+cd alb
+terragrunt output dns_name
+```
+
+Then try http://dns_name/container1
 
 
 ### App modules

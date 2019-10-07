@@ -23,7 +23,7 @@ inputs = {
 
   worker_groups = [
     {
-      instance_type = "m5.large"
+      instance_type = "m5.xlarge"
       asg_max_size  = 1
       tags = [{
         key                 = "Env"
