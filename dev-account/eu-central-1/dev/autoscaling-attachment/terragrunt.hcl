@@ -2,7 +2,7 @@
 # working directory, into a temporary folder, and execute your Terraform commands in that folder.
 
 terraform {
-  source = "git::git@github.com:lejeunen/containers-infrastructure-modules.git//autoscaling-attachment"
+  source = "git::git@github.com:lejeunen/containers-infrastructure-modules.git//autoscaling-attachment?ref=v0.1.0"
 }
 
 # Include all settings from the root terragrunt.hcl file

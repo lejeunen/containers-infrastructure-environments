@@ -36,7 +36,7 @@ terragrunt apply
 Update local kube configuration (in ~/.kube), using the generated kubeconfig file. See the _kubeconfig_filename_ output parameter.
 
 
-Check cluster state with _kubectl cluster-info_ and _kubectl get nodes -A_
+Check cluster state with _kubectl cluster-info_ and _kubectl get pods -A_
 
 
 
@@ -93,6 +93,15 @@ The last step is to associate target group created by the ALB with the workers A
 
 - autoscaling-attachment
 
+
+### App modules
+
+```
+cd dev-account/eu-central-1/dev/module1
+terragrunt apply 
+
+```
+
 ### Test it
 
 Get the url of the ALB with
@@ -104,14 +113,19 @@ terragrunt output dns_name
 
 Then try http://dns_name/container1
 
+## Cleaning up
 
-### App modules
-
-```
-cd dev-account/eu-central-1/dev/module1
-terragrunt apply 
+Execute _terragrunt destroy_ on each component, in the inverse order used to create them.
 
 ```
+cd module1
+terragrunt destroy
+cd ../autoscaling-attachment
+terragrunt destroy
+...
+```
+
+I sometimes have an issue when destroying the VPC -> delete from the AWS console and _terragrunt refresh_
 
 
 ## To execute with local reference, override the source
@@ -132,3 +146,7 @@ url = http://hello-world-dev-1612745828.eu-central-1.elb.amazonaws.com:80
 Hello, World
 
 ```
+
+## Things to improve
+
+It would be nice to have the module version (git tag, i.e. v0.1.0) defined once per environment and use it in the source string of each component. I did not manage to do it.

@@ -2,7 +2,7 @@
 # working directory, into a temporary folder, and execute your Terraform commands in that folder.
 
 terraform {
-  source = "git::git@github.com:lejeunen/containers-infrastructure-modules.git//tiller"
+  source = "git::git@github.com:lejeunen/containers-infrastructure-modules.git//tiller?ref=v0.1.0"
 
 }
 
