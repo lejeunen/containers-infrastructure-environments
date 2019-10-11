@@ -62,6 +62,18 @@ terragrunt apply
 
 ```
 
+Following [best practice](https://github.com/kubernetes/dashboard) , the dashboard is not exposed and the recommended way to access it is to
+
+```
+kubectl proxy
+aws eks get-token --cluster-name dev01 | jq -r '.status.token'
+
+```
+
+Alternatively, create a service account as described [here](https://blog.heptio.com/on-securing-the-kubernetes-dashboard-16b09b1b7aca)
+
+The open http://localhost:8001/api/v1/namespaces/kube-system/services/https:dashboard-kubernetes-dashboard:/proxy/#!/login
+
 ### Ingress
 
 Order is important
