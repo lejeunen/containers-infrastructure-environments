@@ -127,7 +127,7 @@ Then try http://dns_name/container1
 
 ## Cleaning up
 
-Execute _terragrunt destroy_ on each component, in the inverse order used to create them.
+Execute _terragrunt destroy_ on each component, in the reverse order used to create them.
 
 ```
 cd module1
