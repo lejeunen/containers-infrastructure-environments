@@ -49,6 +49,25 @@ inputs = {
   http_tcp_listeners            = "${list(map("port", "80", "protocol", "HTTP"))}"
   target_groups_count           = 1
   target_groups                 = "${list(map("name", "application", "backend_protocol", "HTTP", "backend_port", dependency.nginx.outputs.node_port))}"
+
+  # See https://kubernetes.github.io/ingress-nginx/user-guide/default-backend/
+  # Note : according to https://github.com/terraform-aws-modules/terraform-aws-alb/pull/81 I should not
+  # have to pass all defaults, but I did not get it to work
+  target_groups_defaults = {
+    cookie_duration = 86400
+    deregistration_delay = 300
+    health_check_healthy_threshold = 3
+    health_check_interval = 10
+    health_check_matcher = "200-299"
+    health_check_path = "/healthz"
+    health_check_port = "traffic-port"
+    health_check_timeout = 5
+    health_check_unhealthy_threshold = 3
+    stickiness_enabled = false
+    target_type = "instance"
+    slow_start = 0
+  }
+
   extra_ssl_certs_count         = 0
   extra_ssl_certs               = []
 }
