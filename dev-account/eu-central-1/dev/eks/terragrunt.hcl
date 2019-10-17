@@ -23,11 +23,16 @@ inputs = {
 
   worker_groups = [
     {
-      instance_type = "m5.xlarge"
-      asg_max_size  = 1
+      instance_type = "m5.large"
+      asg_max_size  = 2
+      asg_desired_capacity = 2
       tags = [{
-        key                 = "Env"
+        key                 = "containers/env"
         value               = "dev"
+        propagate_at_launch = true
+      },{
+        key                 = "containers/terraform"
+        value               = "true"
         propagate_at_launch = true
       }]
     }

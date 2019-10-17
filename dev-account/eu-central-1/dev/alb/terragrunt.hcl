@@ -40,7 +40,7 @@ inputs = {
   security_groups               = [dependency.sg_http.outputs.this_security_group_id, dependency.sg_https.outputs.this_security_group_id, dependency.eks.outputs.worker_security_group_id]
   logging_enabled               = false
   subnets                       = dependency.vpc.outputs.public_subnets
-  tags                          = "${map("Env", "dev")}"
+  tags                          = "${map("containers/env", "dev", "containers/terraform", "true")}"
   vpc_id                        = dependency.vpc.outputs.vpc_id
   https_listeners_count         = 1
   # TODO reference certificate instead of hard coding

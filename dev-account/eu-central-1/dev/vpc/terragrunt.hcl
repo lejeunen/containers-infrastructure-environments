@@ -24,15 +24,21 @@ inputs = {
 
   vpc_tags = {
     "kubernetes.io/cluster/vpc-dev" = "shared"
+    "containers/env" = "dev"
+    "containers/terraform" = "true"
   }
 
   public_subnet_tags = {
     "kubernetes.io/cluster/vpc-dev" = "shared"
     "kubernetes.io/role/elb"                      = "1"
+    "containers/env" = "dev"
+    "containers/terraform" = "true"
   }
 
   private_subnet_tags = {
     "kubernetes.io/cluster/vpc-dev" = "shared"
     "kubernetes.io/role/internal-elb"             = "1"
+    "containers/env" = "dev"
+    "containers/terraform" = "true"
   }
 }
