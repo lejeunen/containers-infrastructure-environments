@@ -20,6 +20,7 @@ inputs = {
   cluster_name = dependency.vpc.outputs.name
   subnets  = dependency.vpc.outputs.private_subnets
   vpc_id = dependency.vpc.outputs.vpc_id
+  cluster_enabled_log_types = ["api", "authenticator"]  # "api","audit","authenticator","controllerManager","scheduler"
 
   worker_groups = [
     {
