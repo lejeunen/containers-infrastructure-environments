@@ -21,6 +21,7 @@ inputs = {
   subnets  = dependency.vpc.outputs.private_subnets
   vpc_id = dependency.vpc.outputs.vpc_id
   cluster_enabled_log_types = ["api", "authenticator"]  # "api","audit","authenticator","controllerManager","scheduler"
+  kubernetes_version        = 1.14
 
   worker_groups = [
     {
