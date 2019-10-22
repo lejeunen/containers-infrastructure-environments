@@ -44,7 +44,7 @@ inputs = {
   vpc_id                        = dependency.vpc.outputs.vpc_id
   https_listeners_count         = 1
   # TODO reference certificate instead of hard coding
-  https_listeners               = "${list(map("certificate_arn", "arn:aws:acm:eu-central-1:840205991060:certificate/a8e6c504-c4d3-4ee6-9b09-2e2e54a34e6c", "port", 443))}"
+  https_listeners               = "${list(map("certificate_arn", "arn:aws:acm:eu-central-1:8XXXXXXX0:certificate/a8e6c504-c4d3-4ee6-9b09-2e2e54a34e6c", "port", 443))}"
   http_tcp_listeners_count      = 1
   http_tcp_listeners            = "${list(map("port", "80", "protocol", "HTTP"))}"
   target_groups_count           = 1

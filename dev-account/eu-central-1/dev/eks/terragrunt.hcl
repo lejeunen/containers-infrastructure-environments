@@ -39,4 +39,16 @@ inputs = {
       }]
     }
   ]
+
+  map_roles = [
+    {
+      rolearn = "arn:aws:iam::8XXXXXXX0:role/role-developer"
+      username = "developer"
+      groups    = []
+    },{
+      rolearn = "arn:aws:iam::8XXXXXXXX0:role/role-admin"
+      username = "admin"
+      groups    = ["system:masters"]
+    }
+  ]
 }

@@ -125,6 +125,23 @@ terragrunt output dns_name
 
 Then try http://dns_name/container1
 
+## Controlling access to cluster
+
+The IAM identity who creates the cluster becomes superadmin, although it's not visible in the aws-auth config map.
+
+It's possible to to grant access to the cluster to other (IAM) users or roles. Role is easier to manage.
+
+The cluster-access module creates 2 roles and necessary policies to assume them.
+
+```
+cd dev-account/eu-central-1/dev/cluster-access
+terragrunt apply 
+
+```
+     
+
+
+
 ## Cleaning up
 
 Execute _terragrunt destroy_ on each component, in the reverse order used to create them.
