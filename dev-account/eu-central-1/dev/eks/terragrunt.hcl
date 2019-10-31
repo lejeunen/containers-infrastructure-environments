@@ -51,4 +51,8 @@ inputs = {
       groups    = ["system:masters"]
     }
   ]
+
+  workers_group_defaults = {
+    key_name = "eks-dev"
+  }
 }
